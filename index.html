@@ -374,6 +374,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input id="f-apellido" type="text" placeholder="Apellido" autocomplete="off" required>
             </div>
           </div>
+          
+            <div class="field">
+              <label for="f-nombre">Nombre del niño</label>
+              <input id="f-nombre" type="text" placeholder="Nombre del niño" autocomplete="off" required style="margin-bottom: 10px;">
+            </div>           
+          
           <div class="field-row">
             <div class="field">
               <label for="f-telefono">Teléfono</label>
@@ -391,8 +397,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="f-grupo">Grupo y horario de la clase demo</label>
             <select id="f-grupo" autocomplete="off" required>
               <option value="" disabled selected>Selecciona</option>
-              <option value="4 - 6 años">Edades de 4-6 años - Viernes 18 set - 16:00 a 16:45</option>
-              <option value="7 - 10 años">Edades 7-10 años - Viernes 18 set - 18:00 a 18:45</option>
+              <option value="4 - 6 años">Edades de 4-6 años - Viernes 25 set - 16:00 a 16:45</option>
+              <option value="7 - 10 años">Edades 7-10 años - Viernes 25 set - 18:00 a 18:45</option>
             </select>
           </div>
 
@@ -469,6 +475,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       fields: [
         { name: 'firstname', value: document.getElementById('f-nombre').value.trim() },
         { name: 'lastname', value: document.getElementById('f-apellido').value.trim() },
+        { name: 'nombre_del_nino', value: document.getElementById('f-nombre del niño').value.trim() },
         { name: 'phone', value: phone },
         { name: 'email', value: document.getElementById('f-correo').value.trim() },
         { name: 'edad___nino___rango', value: document.getElementById('f-grupo').value },
