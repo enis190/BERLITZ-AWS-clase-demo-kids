@@ -1,0 +1,271 @@
+:root {
+    --calendar-bg: #dceaf7;
+    --cell-bg: #ffffff;
+    --text-main: #1d3369;
+    --text-secondary: #5a73a3;
+    --lvl1-bg: #aebef8;
+    --lvl1-badge: #1f4ff1;
+    --lvl2-bg: #d0b8f9;
+    --lvl2-badge: #964cf5;
+    --lvl3-bg: #a9eab5;
+    --lvl3-badge: #26cb55;
+}
+
+.layout-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(135deg, #2EBF9D, #004FEF 50%, #526AF6);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.layout-inner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1300px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.sidebar {
+    width: 40%;
+    padding: 40px 36px;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.sidebar h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: #fff;
+}
+
+.sidebar p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    max-width: 90%;
+}
+
+.decorative-loop {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    display: block;
+    animation: lazoFadeIn 0.8s ease-out;
+}
+
+@keyframes lazoFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.calendar-wrapper {
+    width: 70%;
+    background-color: var(--calendar-bg);
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.calendar-wrapper:empty::after {
+    content: "Cargando calendario...";
+    display: block;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 1.2fr 0.2fr;
+    gap: 8px;
+}
+
+.header-day {
+    background-color: #f1f6fc;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.day-short {
+    display: none;
+}
+
+.header-day:last-child,
+.header-day:first-child {
+    color: var(--text-secondary);
+}
+
+.day-cell {
+    background-color: var(--cell-bg);
+    border-radius: 6px;
+    min-height: 36px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.day-cell.empty {
+    background-color: transparent;
+}
+
+.day-cell.normal-day {
+    align-items: center;
+    justify-content: center;
+}
+
+.day-cell.friday-cell {
+    align-items: flex-start;
+    padding: 0;
+}
+
+.day-number {
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+.friday-cell .day-number {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.friday-cell.has-events .day-number {
+    display: inline-block;
+    background: white;
+    padding: 4px 16px;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    font-size: 1.1rem;
+    font-weight: 700;
+    z-index: 2;
+    position: relative;
+    top: -5px;
+    margin-left: -6px;
+    margin-bottom: 4px;
+}
+
+.friday-cell.has-events .event-card {
+    padding-top: 7px;
+}
+
+.event-card {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1px;
+    padding: 12px 10px 8px 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-card:last-child {
+    margin-bottom: 0;
+}
+
+.event-badge {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    min-width: 76px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+
+.event-title {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.event-time {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    background: rgba(255,255,255,0.5);
+    padding: 1px 8px;
+    border-radius: 8px;
+}
+
+.lvl-1 { background-color: var(--lvl1-bg); }
+.lvl-1 .event-badge { background-color: var(--lvl1-badge); }
+.lvl-2 { background-color: var(--lvl2-bg); }
+.lvl-2 .event-badge { background-color: var(--lvl2-badge); }
+.lvl-3 { background-color: var(--lvl3-bg); }
+.lvl-3 .event-badge { background-color: var(--lvl3-badge); }
+
+@media (min-width: 1200px) {
+    .calendar-wrapper { padding: 24px 10px; }
+    .calendar-grid { gap: 8px; }
+    .day-cell { min-height: 40px; padding: 10px; }
+    .day-cell.friday-cell { padding: 0; }
+    .event-title { font-size: 0.8rem; }
+    .event-time { font-size: 0.75rem; padding: 2px 10px; }
+    .event-card { padding: 14px 12px 10px 12px; }
+    .sidebar h2 { font-size: 1.4rem; }
+    .sidebar h1 { font-size: 3.1rem; }
+    .sidebar p { font-size: 1rem; }
+}
+
+@media (max-width: 1024px) {
+    .layout-container { box-shadow: none; }
+    .layout-inner { flex-direction: column; margin: 0; border-radius: 0; }
+    .sidebar { width: 100%; padding: 32px 20px; border-radius: 0; align-items: center; text-align: center; }
+    .sidebar h2 { font-size: 1.1rem; }
+    .sidebar h1 { font-size: 2.8rem; margin-bottom: 8px; }
+    .sidebar p { font-size: 0.9rem; max-width: 100%; }
+    .decorative-loop { display: none; }
+    .calendar-wrapper { width: 100%; border-radius: 0; overflow: hidden; padding: 12px; }
+    .calendar-grid { gap: 3px; grid-template-columns: 0.12fr 0.12fr 0.12fr 0.12fr 0.12fr 0.8fr 0.12fr; }
+    .header-day { font-size: 0.65rem; padding: 6px 0; }
+    .day-full { display: none; }
+    .day-short { display: inline; }
+    .day-cell { min-height: 30px; padding: 6px; font-size: 0.8rem; border-radius: 4px; }
+    .day-cell.normal-day { padding: 6px 2px; }
+    .day-cell.friday-cell { padding: 0; }
+    .day-number { font-size: 0.75rem; margin-bottom: 4px; }
+    .friday-cell.has-events .day-number { font-size: 0.8rem; padding: 3px 12px; margin-left: -4px; margin-bottom: 3px; top: -4px; }
+    .event-card { padding: 10px 8px 6px 8px; margin-bottom: 1px; border-radius: 4px; gap: 4px; }
+    .event-badge { font-size: 0.45rem; padding: 2px 6px; top: -6px; left: 50%; }
+    .event-title { font-size: 0.65rem; line-height: 1.2; }
+    .event-time { font-size: 0.6rem; padding: 1px 6px; }
+}
